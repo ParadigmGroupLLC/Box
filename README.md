@@ -1,54 +1,32 @@
-# Remotion video
+# Box：こもれびコーヒーのリール制作
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+Claude Code のサブエージェント10人で、リールを作るためのフォルダです。映像は [HyperFrames](https://hyperframes.heygen.com)（HTMLで書いて MP4 に書き出す道具）で作ります。
 
-Welcome to your Remotion project!
+## 中身
+| 場所 | 中身 |
+|---|---|
+| `CLAUDE.md` | 全員が守る共通ルール（アカウント・口調・デザイン・音・書き出し） |
+| `.claude/agents/` | 10人分のエージェント（統括は `reel-producer`） |
+| `.claude/skills/` | HyperFrames の使い方（映像担当が読む） |
+| `テンプレート/` | 縦 1080×1920 の HyperFrames プロジェクトのひな形。N本目/project/ にコピーして使う |
+| `ネタ帳/` | リサーチ対象・使用済みの投稿・リサーチ結果 |
+| `効果音/` | 使ってよい効果音だけを入れる |
 
-## Commands
+## 準備
+Node.js 22 以上と FFmpeg が必要です。
 
-**Install Dependencies**
-
-```console
-npm i --loglevel=error
+```bash
+npm install
+npm run browser
+npm run doctor
 ```
 
-**Start Preview**
+## 使い方
+Claude Code で `reel-producer` に「ネタを出して」「N本目を編集して」などと頼みます。
 
-```console
-npm run dev
+テンプレートを単体で書き出すとき：
+
+```bash
+cd テンプレート
+npx hyperframes render -o out.mp4
 ```
-
-**Render video**
-
-```console
-npx remotion render
-```
-
-**Upgrade Remotion**
-
-```console
-npx remotion upgrade
-```
-
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
