@@ -1,0 +1,235 @@
+<title>①改 絵コンテ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap">
+<style>
+/* 縦の画面を7つ並べた絵コンテ → 下に応接室の配置図。画面の中は動画の見え方（白地）で固定 */
+:root{
+  --bg:#f4f6f8; --paper:#ffffff; --ink:#333333; --muted:#5f6b76; --line:#d7dde3;
+  --brand:#1D5D89; --brand-soft:#e3edf5; --yellow:#f5c400;
+  --f:"Noto Sans JP",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13181d;--paper:#1b2228;--ink:#e6e9ec;--muted:#a3adb7;--line:#2e3740;--brand-soft:#1d3142;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#13181d;--paper:#1b2228;--ink:#e6e9ec;--muted:#a3adb7;--line:#2e3740;--brand-soft:#1d3142;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);line-height:1.7;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+h1{font-size:26px;font-weight:900;margin:0;text-wrap:balance}
+h2{font-size:18px;font-weight:900;margin:0;color:var(--brand)}
+:root:not([data-theme="light"]) h2{}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h2{color:#7fb6dc}}
+:root[data-theme="dark"] h2{color:#7fb6dc}
+p{margin:0}
+.lead{color:var(--muted);max-width:68ch}
+.board{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:18px}
+.cut{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:8px;align-content:start;min-width:0}
+.cut svg{width:100%;height:auto;display:block;border-radius:6px;border:1px solid #c9d2da}
+.no{display:flex;gap:8px;align-items:baseline;font-weight:900}
+.no .t{color:var(--muted);font-weight:700;font-size:13px;font-variant-numeric:tabular-nums}
+.how{font-size:13px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block;border:1px solid #9aa6b1}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:12px}
+.plan .fig{overflow-x:auto}
+.plan svg{width:100%;min-width:520px;max-width:760px;height:auto;display:block}
+ul{margin:0;padding-left:1.2em;display:grid;gap:4px}
+</style>
+
+<div class="wrap">
+<header style="display:grid;gap:8px">
+<h1>①改 絵コンテ：応接室で語る、穴をあける機械の進化</h1>
+<p class="lead">夏坂さん・野﨑さんがジャンボの模型を前に話す、約28秒の縦動画（1080×1920）の撮影イメージです。字幕は話す人の頭のすぐ上に置き、顔に被せません。画面の上の端と下の端（薄い斜線）は Instagram のボタンと重なるので、大事な文字を置きません。</p>
+<div class="legend"><span><i class="sw" style="background:#fff"></i>動画の画面（白地）</span><span><i class="sw" style="background:#1D5D89"></i>字幕・表示（青）</span><span><i class="sw" style="background:#f5c400"></i>強調（1画面に1か所）</span><span><i class="sw" style="background:repeating-linear-gradient(45deg,#e8ecef 0 4px,#fff 4px 8px)"></i>文字を置かない所</span></div>
+</header>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#ffffff"/><rect width="4" height="8" fill="#e8ecef"/></pattern>
+  <!-- ジャンボの模型（横向き） -->
+  <symbol id="jumbo" viewBox="0 0 160 80">
+    <rect x="44" y="34" width="84" height="24" rx="4" fill="#e7a520" stroke="#333" stroke-width="2"/>
+    <rect x="104" y="18" width="26" height="18" rx="3" fill="#cfe0ec" stroke="#333" stroke-width="2"/>
+    <circle cx="60" cy="62" r="10" fill="#555" stroke="#333" stroke-width="2"/><circle cx="112" cy="62" r="10" fill="#555" stroke="#333" stroke-width="2"/>
+    <g stroke="#333" stroke-width="4" stroke-linecap="round"><line x1="48" y1="36" x2="12" y2="20"/><line x1="48" y1="42" x2="8" y2="38"/><line x1="48" y1="48" x2="12" y2="56"/></g>
+    <g fill="#333"><circle cx="12" cy="20" r="3"/><circle cx="8" cy="38" r="3"/><circle cx="12" cy="56" r="3"/></g>
+  </symbol>
+  <!-- 人（座って正面） -->
+  <symbol id="person" viewBox="0 0 70 110">
+    <circle cx="35" cy="22" r="16" fill="#f1d6bd" stroke="#333" stroke-width="2"/>
+    <path d="M8 108 V62 a27 22 0 0 1 54 0 V108 Z" fill="#9fb4c4" stroke="#333" stroke-width="2"/>
+  </symbol>
+</defs>
+</svg>
+
+<section class="board" aria-label="7つの場面">
+
+<!-- 1 -->
+<article class="cut">
+<div class="no">1 答え <span class="t">0.0–3.0秒</span></div>
+<svg viewBox="0 0 270 480" role="img" aria-label="模型の寄り。野﨑さんの質問の字幕">
+<rect width="270" height="480" fill="#fff"/>
+<rect width="270" height="56" fill="url(#hatch)"/><rect y="404" width="270" height="76" fill="url(#hatch)"/>
+<rect x="0" y="300" width="270" height="104" fill="#a07a52"/>
+<use href="#jumbo" x="20" y="170" width="230" height="140"/>
+<rect x="18" y="74" width="234" height="56" rx="6" fill="#1D5D89"/>
+<text x="135" y="98" fill="#fff" font-size="15" font-weight="700" text-anchor="middle">野﨑：これ、何の機械ですか？</text>
+<text x="135" y="120" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">夏坂：トンネルに穴をあける機械です</text>
+<text x="135" y="392" fill="#fff" font-size="12" text-anchor="middle">応接の机（模型の寄り）</text>
+</svg>
+<p class="how">模型の寄りから始め、引いて2人を映す。最初の1秒で模型が見えるようにする。</p>
+</article>
+
+<!-- 2 -->
+<article class="cut">
+<div class="no">2 ①手持ち <span class="t">3.0–7.5秒</span></div>
+<svg viewBox="0 0 270 480" role="img" aria-label="昔のセピア写真。人が機械を抱えて穴をあける">
+<rect width="270" height="480" fill="#fff"/>
+<rect x="0" y="56" width="270" height="348" fill="#c9b18c"/>
+<rect x="0" y="56" width="270" height="348" fill="#7b5e3c" opacity=".25"/>
+<path d="M0 404 L0 300 Q135 230 270 300 L270 404 Z" fill="#8a6c47"/>
+<g transform="translate(80 210)"><use href="#person" width="70" height="110"/></g>
+<g stroke="#4a3622" stroke-width="7" stroke-linecap="round"><line x1="135" y1="270" x2="200" y2="250"/></g>
+<rect x="196" y="244" width="10" height="12" fill="#4a3622"/>
+<rect x="14" y="68" width="92" height="28" rx="4" fill="#1D5D89"/><text x="60" y="88" fill="#fff" font-size="15" font-weight="900" text-anchor="middle">①手持ち</text>
+<rect x="18" y="140" width="234" height="56" rx="6" fill="#1D5D89"/>
+<text x="135" y="164" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">夏坂：昔は、人が機械を</text>
+<text x="135" y="186" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">抱えて穴をあけてました</text>
+<text x="135" y="392" fill="#fff" font-size="12" text-anchor="middle">昔のセピア写真（成豊建設のもの）</text>
+<rect width="270" height="56" fill="url(#hatch)"/><rect y="404" width="270" height="76" fill="url(#hatch)"/>
+</svg>
+<p class="how">写真を画面いっぱいに。少しずつ寄る（ゆっくりズーム）。最後に野﨑さん「重そう…」を声だけで重ねる。</p>
+</article>
+
+<!-- 3 -->
+<article class="cut">
+<div class="no">3 ②手動 <span class="t">7.5–12.0秒</span></div>
+<svg viewBox="0 0 270 480" role="img" aria-label="2人が模型をはさんで座り、夏坂さんが模型の腕を手で動かす">
+<rect width="270" height="480" fill="#fff"/>
+<rect width="270" height="56" fill="url(#hatch)"/><rect y="404" width="270" height="76" fill="url(#hatch)"/>
+<g transform="translate(14 200)"><use href="#person" width="80" height="126"/></g>
+<g transform="translate(176 200)"><use href="#person" width="80" height="126"/></g>
+<text x="54" y="344" fill="#333" font-size="12" font-weight="700" text-anchor="middle">夏坂</text>
+<text x="216" y="344" fill="#333" font-size="12" font-weight="700" text-anchor="middle">野﨑</text>
+<rect x="40" y="300" width="190" height="16" fill="#a07a52"/>
+<use href="#jumbo" x="80" y="256" width="110" height="55"/>
+<path d="M78 262 q-14 -18 6 -26" fill="none" stroke="#1D5D89" stroke-width="3"/><path d="M84 236 l-8 2 4 6" fill="none" stroke="#1D5D89" stroke-width="3"/>
+<rect x="14" y="68" width="78" height="28" rx="4" fill="#1D5D89"/><text x="53" y="88" fill="#fff" font-size="15" font-weight="900" text-anchor="middle">②手動</text>
+<rect x="10" y="110" width="250" height="78" rx="6" fill="#1D5D89"/>
+<text x="135" y="134" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">夏坂：次はレバーで、</text>
+<text x="135" y="156" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">腕を1本ずつ。</text>
+<text x="135" y="178" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">昔はこんなでしたけどね</text>
+</svg>
+<p class="how">2人を正面から（引き）。夏坂さんが模型の腕を手で1本ずつ動かす。思い出を一言足すと強くなる。</p>
+</article>
+
+<!-- 4 -->
+<article class="cut">
+<div class="no">4 ③セミオート（今） <span class="t">12.0–16.5秒</span></div>
+<svg viewBox="0 0 270 480" role="img" aria-label="模型の腕の先の寄り。位置合わせの印が黄色">
+<rect width="270" height="480" fill="#fff"/>
+<rect x="0" y="330" width="270" height="74" fill="#a07a52"/>
+<use href="#jumbo" x="-40" y="190" width="330" height="165"/>
+<circle cx="44" cy="234" r="22" fill="none" stroke="#1D5D89" stroke-width="3" stroke-dasharray="5 4"/>
+<circle cx="44" cy="234" r="8" fill="#f5c400" stroke="#333" stroke-width="2"/>
+<rect x="14" y="68" width="128" height="28" rx="4" fill="#1D5D89"/><text x="78" y="88" fill="#fff" font-size="15" font-weight="900" text-anchor="middle">③セミオート</text>
+<rect x="18" y="112" width="234" height="56" rx="6" fill="#1D5D89"/>
+<text x="135" y="136" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">夏坂：今は、穴の位置合わせを</text>
+<text x="135" y="158" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">機械が手伝ってくれます</text>
+<text x="135" y="392" fill="#fff" font-size="12" text-anchor="middle">腕の先に印（シールや小さなライト）</text>
+<rect width="270" height="56" fill="url(#hatch)"/><rect y="404" width="270" height="76" fill="url(#hatch)"/>
+</svg>
+<p class="how">模型の腕の先に寄る。黄色の印（シールや小さなライト）で「機械が位置を合わせる所」を見せる。</p>
+</article>
+
+<!-- 5 -->
+<article class="cut">
+<div class="no">5 ④フルオート（将来） <span class="t">16.5–21.5秒</span></div>
+<svg viewBox="0 0 270 480" role="img" aria-label="夏坂さんがボタンを押し、模型の腕がそろって動く">
+<rect width="270" height="480" fill="#fff"/>
+<rect width="270" height="56" fill="url(#hatch)"/><rect y="404" width="270" height="76" fill="url(#hatch)"/>
+<g transform="translate(150 200)"><use href="#person" width="80" height="126"/></g>
+<text x="190" y="344" fill="#333" font-size="12" font-weight="700" text-anchor="middle">夏坂</text>
+<rect x="20" y="300" width="230" height="16" fill="#a07a52"/>
+<use href="#jumbo" x="30" y="248" width="120" height="60"/>
+<g stroke="#1D5D89" stroke-width="2"><line x1="28" y1="250" x2="16" y2="244"/><line x1="26" y1="266" x2="12" y2="266"/><line x1="28" y1="282" x2="16" y2="290"/></g>
+<rect x="160" y="286" width="34" height="14" rx="3" fill="#555"/><circle cx="177" cy="284" r="8" fill="#f5c400" stroke="#333" stroke-width="2"/>
+<rect x="14" y="68" width="166" height="28" rx="4" fill="#1D5D89"/><text x="97" y="88" fill="#fff" font-size="15" font-weight="900" text-anchor="middle">④フルオート（将来）</text>
+<rect x="18" y="110" width="234" height="78" rx="6" fill="#1D5D89"/>
+<text x="135" y="134" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">夏坂：将来は、</text>
+<text x="135" y="156" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">ボタンを押したら</text>
+<text x="135" y="178" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">全部動きます</text>
+</svg>
+<p class="how">ボタンは小道具（黄色）。押した瞬間に、編集で腕がそろって動くように見せる（動きの線・効果音）。</p>
+</article>
+
+<!-- 6 -->
+<article class="cut">
+<div class="no">6 オチ <span class="t">21.5–25.0秒</span></div>
+<svg viewBox="0 0 270 480" role="img" aria-label="野﨑さんが不安そうに聞き、夏坂さんがボタンを指さして笑う">
+<rect width="270" height="480" fill="#fff"/>
+<rect width="270" height="56" fill="url(#hatch)"/><rect y="404" width="270" height="76" fill="url(#hatch)"/>
+<g transform="translate(14 200)"><use href="#person" width="80" height="126"/></g>
+<g transform="translate(176 200)"><use href="#person" width="80" height="126"/></g>
+<text x="54" y="344" fill="#333" font-size="12" font-weight="700" text-anchor="middle">夏坂</text>
+<text x="216" y="344" fill="#333" font-size="12" font-weight="700" text-anchor="middle">野﨑</text>
+<text x="250" y="232" fill="#1D5D89" font-size="26" font-weight="900">?</text>
+<rect x="40" y="300" width="190" height="16" fill="#a07a52"/>
+<use href="#jumbo" x="80" y="256" width="110" height="55"/>
+<rect x="196" y="286" width="26" height="12" rx="3" fill="#555"/><circle cx="209" cy="285" r="6" fill="#f5c400" stroke="#333" stroke-width="2"/>
+<path d="M88 250 L190 282" stroke="#333" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="10" y="88" width="250" height="100" rx="6" fill="#1D5D89"/>
+<text x="135" y="112" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">野﨑：じゃあ、私たちの</text>
+<text x="135" y="134" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">仕事はなくなる？</text>
+<text x="135" y="164" fill="#fff" font-size="15" font-weight="900" text-anchor="middle">夏坂：押すのは人ですよ</text>
+</svg>
+<p class="how">2人を正面から（引き）。野﨑さんの不安そうな顔 → 夏坂さんがボタンを指さして笑う。間を大事に。</p>
+</article>
+
+<!-- 7 -->
+<article class="cut">
+<div class="no">7 CTA <span class="t">25.0–28.0秒</span></div>
+<svg viewBox="0 0 270 480" role="img" aria-label="最後の画面。いいねのコメントのお願い">
+<rect width="270" height="480" fill="#fff"/>
+<rect width="270" height="56" fill="url(#hatch)"/><rect y="404" width="270" height="76" fill="url(#hatch)"/>
+<text x="135" y="196" fill="#333" font-size="15" font-weight="700" text-anchor="middle">この投稿が面白いと思った方は</text>
+<rect x="95" y="214" width="80" height="52" rx="8" fill="#f5c400"/><text x="135" y="250" fill="#333" font-size="24" font-weight="900" text-anchor="middle">『👍』</text>
+<text x="135" y="294" fill="#333" font-size="15" font-weight="700" text-anchor="middle">で</text>
+<text x="135" y="320" fill="#1D5D89" font-size="17" font-weight="900" text-anchor="middle">コメントしてください！</text>
+</svg>
+<p class="how">いつもの最後の画面。言い終わった直後で終える（静止画で延ばさない）。</p>
+</article>
+</section>
+
+<section class="plan" aria-label="応接室の配置図">
+<h2>応接室の配置（上から見た図）</h2>
+<div class="fig">
+<svg viewBox="0 0 760 360" role="img" aria-label="応接室を上から見た配置図。机の中央に模型、左に夏坂さん、右に野﨑さん、手前にカメラ2台">
+<rect x="10" y="10" width="740" height="340" rx="8" fill="#ffffff" stroke="#9aa6b1" stroke-width="2"/>
+<text x="26" y="36" fill="#5f6b76" font-size="14" font-weight="700">奥の壁（背景はすっきり。会社名やロゴが少し映るとよい）</text>
+<rect x="290" y="120" width="180" height="90" rx="6" fill="#d9c2a3" stroke="#333" stroke-width="2"/>
+<text x="380" y="112" fill="#333" font-size="13" font-weight="700" text-anchor="middle">低い机</text>
+<use href="#jumbo" x="335" y="140" width="90" height="45"/>
+<text x="380" y="200" fill="#333" font-size="12" text-anchor="middle">ジャンボの模型</text>
+<rect x="150" y="120" width="90" height="90" rx="10" fill="#e3edf5" stroke="#1D5D89" stroke-width="2"/>
+<circle cx="195" cy="165" r="22" fill="#9fb4c4" stroke="#333" stroke-width="2"/>
+<text x="195" y="232" fill="#1D5D89" font-size="15" font-weight="900" text-anchor="middle">夏坂さん</text>
+<rect x="520" y="120" width="90" height="90" rx="10" fill="#e3edf5" stroke="#1D5D89" stroke-width="2"/>
+<circle cx="565" cy="165" r="22" fill="#9fb4c4" stroke="#333" stroke-width="2"/>
+<text x="565" y="232" fill="#1D5D89" font-size="15" font-weight="900" text-anchor="middle">野﨑さん</text>
+<rect x="360" y="290" width="40" height="28" rx="4" fill="#333"/><circle cx="380" cy="290" r="8" fill="#1D5D89"/>
+<path d="M380 286 L250 150 M380 286 L510 150" stroke="#1D5D89" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="380" y="338" fill="#333" font-size="13" font-weight="700" text-anchor="middle">スマホ1（縦・三脚）：2人と模型の引き</text>
+<rect x="600" y="262" width="34" height="24" rx="4" fill="#333"/><circle cx="617" cy="262" r="7" fill="#1D5D89"/>
+<path d="M617 258 L430 180" stroke="#1D5D89" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="660" y="304" fill="#333" font-size="13" font-weight="700" text-anchor="middle">スマホ2：模型の寄り</text>
+<circle cx="110" cy="290" r="16" fill="#f5c400" stroke="#333" stroke-width="2"/>
+<text x="110" y="330" fill="#333" font-size="13" font-weight="700" text-anchor="middle">ライト（窓の光でも可）</text>
+</svg>
+</div>
+<ul>
+<li>2人の位置（左右）は目安です。どちらが説明役かで入れ替えます。</li>
+<li>スマホ1は回しっぱなしで、2人の会話を通しで撮る。スマホ2で模型の寄り（場面1・3・4・5）を別に撮り、編集でつなぐ。</li>
+<li>場面2のセピア写真は、成豊建設の昔の写真を使う（ネットの写真は使わない）。なければ絵にする。</li>
+<li>音：BGM は動画に入れず、投稿するときに Instagram で付ける。効果音は 効果音/ フォルダの音源だけ。</li>
+</ul>
+</section>
+</div>
