@@ -202,17 +202,8 @@ def static_layer():
     ts = 56  # 長いタイトルは左右50pxの内側に収まるまで小さくする
     while sum(font(ts).getlength(c) for c in TITLE) > W - 140 and ts > 40: ts -= 1
     center(TITLE, 1415 + (56 - ts) // 2, font(ts), CREAM + (255,))
-    # 「元プロ野球選手　イチロー」：肩書きは少し小さく・クリーム色、名前は白。下をそろえて中央に置く
-    fr, fn = font(24), font(30)
-    gap = 14
-    wr = sum(fr.getlength(c) for c in NAME_ROLE); wn = sum(fn.getlength(c) for c in NAME_JA)
-    x = (W - (wr + gap + wn)) / 2
-    br = fr.getbbox("あ")[3]; bn = fn.getbbox("あ")[3]
-    for c in NAME_ROLE:
-        d.text((x, 1495 + bn - br), c, font=fr, fill=CREAM + (230,)); x += fr.getlength(c)
-    x += gap
-    for c in NAME_JA:
-        d.text((x, 1495), c, font=fn, fill=WHITE + (255,)); x += fn.getlength(c)
+    # 「元プロ野球選手　イチロー」：肩書きも名前と同じフォント・大きさ（30px）・色（白）。間は全角スペース
+    center(NAME_ROLE + "\u3000" + NAME_JA, 1495, font(30), WHITE + (255,))
     center(NAME_EN, 1540, ImageFont.truetype(INTER, 20), (255, 255, 255, 140), track=0.25)
     # タイトルにも薄い影
     a = np.array(lay)[:, :, 3]
