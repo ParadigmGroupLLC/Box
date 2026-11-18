@@ -58,21 +58,22 @@ th.l,td.l{text-align:left}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
 .note{font-size:8.5pt;color:#555}
 .pb{page-break-before:always}
+.cmp{font-size:10pt}.cmp th.c,.cmp td.c{text-align:center;width:38%}.cmp td{padding:1.6mm 2mm}.cmp b{font-size:13pt;color:#1D5D89}
 """
 today="2026年11月18日"
 doc=f"""<!doctype html><html lang=ja><head><meta charset=utf-8><title>成豊建設 SNSレポート</title><style>{css}</style></head><body>
 <h1>成豊建設 SNSレポート（Instagram・TikTok）</h1>
 <div class=sub>@seihoh_kensetsu ／ {today}時点の数字（Windsor.ai から取得）。このPDFは数字を固定したもので、自動では新しくなりません。</div>
 <h2>主な数字</h2>
-<div class=tiles>
-<div class=tile><div class=k>Instagram フォロワー</div><div class=v>{IG_FOLLOWERS}</div><div class=n>人</div></div>
-<div class=tile><div class=k>Instagram 総再生</div><div class=v>{F(ig_total)}</div><div class=n>投稿{len(IG)}本の合計／リールの中央値 {F(int(ig_med))}回</div></div>
-<div class=tile><div class=k>TikTok フォロワー</div><div class=v>{TT_FOLLOWERS}</div><div class=n>人</div></div>
-<div class=tile><div class=k>TikTok 総再生</div><div class=v>{F(tt_total)}</div><div class=n>動画{len(TT)}本の合計／中央値 {F(int(tt_med))}回</div></div>
-<div class=tile><div class=k>Instagram 再生（直近90日）</div><div class=v>{F(ig90)}</div><div class=n>8/20〜11/17</div></div>
-<div class=tile><div class=k>TikTok 再生（直近90日）</div><div class=v>{F(tt90)}</div><div class=n>8/20〜11/16</div></div>
-</div>
-<p>いちばん見られた投稿は、Instagram が「{html.escape(top_ig[2])}」（{F(top_ig[3])}回）、TikTok が「{html.escape(top_tt[1])}」（{F(top_tt[2])}回）です。</p>
+<table class=cmp><tr><th class=l></th><th class=c>Instagram</th><th class=c>TikTok</th></tr>
+<tr><td class=l>フォロワー</td><td class=c><b>{IG_FOLLOWERS}</b> 人</td><td class=c><b>{TT_FOLLOWERS}</b> 人</td></tr>
+<tr><td class=l>投稿した本数</td><td class=c><b>{len(IG)}</b> 本（リール{len(reels)}・画像{len(IG)-len(reels)}）</td><td class=c><b>{len(TT)}</b> 本</td></tr>
+<tr><td class=l>再生の合計（はじめから今日まで）</td><td class=c><b>{F(ig_total)}</b> 回</td><td class=c><b>{F(tt_total)}</b> 回</td></tr>
+<tr><td class=l>1本あたりの再生（中央値）</td><td class=c><b>{F(int(ig_med))}</b> 回</td><td class=c><b>{F(int(tt_med))}</b> 回</td></tr>
+<tr><td class=l>直近90日の再生</td><td class=c><b>{F(ig90)}</b> 回</td><td class=c><b>{F(tt90)}</b> 回</td></tr>
+<tr><td class=l>いちばん見られた投稿</td><td class=c>「{html.escape(top_ig[2])}」<br><b>{F(top_ig[3])}</b> 回</td><td class=c>「{html.escape(top_tt[1])}」<br><b>{F(top_tt[2])}</b> 回</td></tr>
+</table>
+<div class=note>中央値は、再生数を少ない順に並べたときの真ん中の値です（1本だけ大きく伸びた回に引っ張られません）。直近90日は Instagram 8/20〜11/17、TikTok 8/20〜11/16。</div>
 <h2>プロフィールのアクティビティ</h2>
 <div class=sub style="margin-bottom:1mm">Instagram（アプリのインサイト・90日間）</div>
 <div class=tiles style="grid-template-columns:repeat(3,1fr);margin-top:1mm">
@@ -87,11 +88,6 @@ doc=f"""<!doctype html><html lang=ja><head><meta charset=utf-8><title>成豊建�
 <div class=tile><div class=k>動画からプロフィールを見た人（最多）</div><div class=v>{max(r[4] for r in TT)}</div><div class=n>人（「{html.escape(max(TT,key=lambda r:r[4])[1])}」）</div></div>
 </div>
 <div class=note>Instagram は 11/16 にいただいたアプリの画面から写した数字、TikTok は Windsor.ai の数字です。</div>
-<div class=blk><h2>Instagram 毎日の再生（直近90日）</h2>
-{bars(IG_DAILY,IG_DAILY_START,cap=25000)}
-<div class=note>8/24 は {F(max(IG_DAILY))}回（グラフの上限を超えています）。</div></div>
-<div class=blk><h2>TikTok 毎日の再生（直近90日）</h2>
-{bars(TT_DAILY,'2026-08-20',color='#4A8BB5')}</div>
 <div class="two blk">
 <div><h2>種類ごと（Instagram リール）</h2><table><tr><th class=l>種類</th><th>本数</th><th>再生の中央値</th><th>3秒で離れた</th></tr>{rows_kind}</table><div class=note>種類は題名の言葉で分けています。</div></div>
 <div><h2>投稿時間ごと（日本時間）</h2><table><tr><th>時間</th><th>IG本数</th><th>IG再生の中央値</th><th>TT本数</th><th>TT再生の中央値</th><th>TTプロフィールを見た</th></tr>{rows_hour}</table><div class=note>17時台の投稿は9〜10月に多く、同じころ中身も変わっているため、時間だけの差とは言い切れません。</div></div>
@@ -99,6 +95,10 @@ doc=f"""<!doctype html><html lang=ja><head><meta charset=utf-8><title>成豊建�
 <div class="two blk">
 <div><h2>Instagram フォロワーの年代と性別</h2><table><tr><th>年代</th><th>男性</th><th>女性</th><th>不明</th><th>合計</th></tr>{rows_age}</table></div>
 <div><h2>TikTok フォロワーの年代</h2><table><tr><th>年代</th><th>割合</th></tr>{rows_ttage}</table><div class=note>性別：男性 {TT_GENDER['男性']}%・女性 {TT_GENDER['女性']}%。TikTok は割合だけを出します。</div></div>
+</div>
+<div class="two blk">
+<div><h2>Instagram フォロワーの多い市区町村</h2><table><tr><th class=l>市区町村</th><th>人数</th></tr>{''.join(f"<tr><td class=l>{c}</td><td>{n}</td></tr>" for c,n in IG_CITY)}</table><div class=note>{IG_CITY_NOTE}。</div></div>
+<div><h2>TikTok フォロワーの多い都市</h2><table><tr><th class=l>都市</th><th>割合</th></tr>{''.join(f"<tr><td class=l>{c}</td><td>{p}%</td></tr>" for c,p in TT_CITY)}</table><div class=note>TikTok は割合だけを出します。</div></div>
 </div>
 <h2 class=pb>Instagram 全部の投稿</h2>
 <table><tr><th>日付</th><th>時間</th><th class=l>題名</th><th>再生</th><th>届いた人</th><th>保存</th><th>シェア</th><th>3秒で離れた</th></tr>{rows_ig}</table>
