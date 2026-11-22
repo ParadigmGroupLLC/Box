@@ -233,11 +233,15 @@ STATIC = static_layer()
 
 def frame_reader():
     flt = []
+    # 区間ごとにコマ数を固定する（つなぎが多いと、コマの端数がたまって映像が音より遅れるため）
+    acc = 0.0
     for i, (a, b) in enumerate(SEGS):
-        flt.append(f"[{i}:v]setpts=PTS-STARTPTS[v{i}]")
-    flt.append("".join(f"[v{i}]" for i in range(len(SEGS))) + f"concat=n={len(SEGS)}:v=1:a=0,fps={FPS_NUM}/{FPS_DEN},crop={CROP_W}:{CROP_H}:'{crop_expr()}':{CROP_Y},scale={CARD_W}:{CARD_H}:flags=lanczos,eq=gamma=1.08:saturation=1.08,unsharp=5:5:0.4[v]")
+        n = round((acc + b - a) * FPS) - round(acc * FPS)
+        acc += b - a
+        flt.append(f"[{i}:v]fps={FPS_NUM}/{FPS_DEN},trim=end_frame={n},setpts=PTS-STARTPTS[v{i}]")
+    flt.append("".join(f"[v{i}]" for i in range(len(SEGS))) + f"concat=n={len(SEGS)}:v=1:a=0,crop={CROP_W}:{CROP_H}:'{crop_expr()}':{CROP_Y},scale={CARD_W}:{CARD_H}:flags=lanczos,eq=gamma=1.08:saturation=1.08,unsharp=5:5:0.4[v]")
     cmd = ["ffmpeg", "-loglevel", "error"]
-    for a, b in SEGS: cmd += ["-ss", str(a), "-to", str(b), "-i", SRC]
+    for a, b in SEGS: cmd += ["-ss", str(a), "-to", str(b + 0.2), "-i", SRC]
     cmd += ["-filter_complex", ";".join(flt), "-map", "[v]", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"]
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
     n = CARD_W * CARD_H * 3
